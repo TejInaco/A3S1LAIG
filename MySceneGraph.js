@@ -1,12 +1,15 @@
 var DEGREE_TO_RAD = Math.PI / 180;
 
 // Order of the groups in the XML document.
-var INITIALS_INDEX = 0;
-var ILLUMINATION_INDEX = 1;
-var LIGHTS_INDEX = 2;
-var TEXTURES_INDEX = 3;
-var MATERIALS_INDEX = 4;
-var NODES_INDEX = 5;
+var SCENES_INDEX = 0;
+var VIEWS_INDEX = 1;
+var AMBIENT_INDEX = 2;
+var LIGHTS_INDEX = 3;
+var TEXTURES = 4;
+var MATERIALS_INDEX = 5;
+var TRANSFORMATIONS_INDEX = 6;
+var PRIMITIVES_INDEX = 7;
+var COMPONENTS_INDEX = 8;
 
 /**
  * MySceneGraph class, representing the scene graph.
@@ -26,7 +29,8 @@ class MySceneGraph {
 
         this.nodes = [];
 
-        this.idRoot = null;                    // The id of the root element.
+        this.idRoot = null;
+        // The id of the root element.
 
         this.axisCoords = [];
         this.axisCoords['x'] = [1, 0, 0];
@@ -47,13 +51,13 @@ class MySceneGraph {
         this.reader.open('scenes/' + filename, this);
     }
 
-
     /*
      * Callback to be executed after successful reading
      */
     onXMLReady() {
         this.log("XML Loading finished.");
-        var rootElement = this.reader.xmlDoc.documentElement;//no nosso caso o roéot  <YAP>
+        var rootElement = this.reader.xmlDoc.documentElement;
+        //no nosso caso o roéot  <YAP>
 
         // Here should go the calls for different functions to parse the various blocks
         var error = this.parseXMLFile(rootElement);
@@ -74,10 +78,11 @@ class MySceneGraph {
      * @param {XML root element} rootElement
      */
     parseXMLFile(rootElement) {
-        if (rootElement.nodeName != "SCENE")//<YAP>
-            return "root tag <SCENE> missing";
+        if (rootElement.nodeName != "YAS")
+            return "root tag <YAS> missing";
 
-        var nodes = rootElement.children//views,ambient,materials,etc nao s nome, róeferencias completas...
+        var nodes = rootElement.children
+        //views,ambient,materials,etc nao s nome, róeferencias completas...
 
         // Reads the names of the nodes to an auxiliary buffer.
         var nodeNames = [];
@@ -90,28 +95,40 @@ class MySceneGraph {
 
         // Processes each node, verifying errors.
 
-        // <INITIALS>
+        //SCENE
         var index;
-        if ((index = nodeNames.indexOf("INITIALS")) == -1)
-            return "tag <INITIALS> missing";
+        if ((index = nodeNames.indexOf("SCENE")) == -1)
+            return "tag <SCENE> missing";
         else {
-            if (index != INITIALS_INDEX)
-                this.onXMLMinorError("tag <INITIALS> out of order");
+            if (index != SCENE_INDEX)
+                this.onXMLMinorError("tag <SCENE> out of order");
 
-            //Parse INITIAL block
-            if ((error = this.parseInitials(nodes[index])) != null)
+            //Parse SCENE block
+            if ((error = this.parseScene(nodes[index])) != null)
                 return error;
         }
 
-        // <ILLUMINATION>
-        if ((index = nodeNames.indexOf("ILLUMINATION")) == -1)
-            return "tag <ILLUMINATION> missing";
+        //VIEWS
+        if ((index = nodeNames.indexOf("VIEWS")) == -1)
+            return "tag <VIEWS> missing";
         else {
-            if (index != ILLUMINATION_INDEX)
-                this.onXMLMinorError("tag <ILLUMINATION> out of order");
+            if (index != VIEWS_INDEX)
+                this.onXMLMinorError("tag <VIEWS> out of order");
 
-            //Parse ILLUMINATION block
-            if ((error = this.parseIllumination(nodes[index])) != null)
+            //Parse VIEWS block
+            if ((error = this.parseViews(nodes[index])) != null)
+                return error;
+        }
+
+        //AMBIENT
+        if ((index = nodeNames.indexOf("AMBIENT")) == -1)
+            return "tag <AMBIENT> missing";
+        else {
+            if (index != AMBIENT_INDEX)
+                this.onXMLMinorError("tag <AMBIENT> out of order");
+
+            //Parse VIEWS block
+            if ((error = this.parseAMBIENT(nodes[index])) != null)
                 return error;
         }
 
@@ -122,8 +139,32 @@ class MySceneGraph {
             if (index != LIGHTS_INDEX)
                 this.onXMLMinorError("tag <LIGHTS> out of order");
 
+            //Parse INITIAL block
+            if ((error = this.parseLIGHTS(nodes[index])) != null)
+                return error;
+        }
+
+        // <TEXTURES>
+        if ((index = nodeNames.indexOf("TEXTURES")) == -1)
+            return "tag <TEXTURES> missing";
+        else {
+            if (index != TEXTURES_INDEX)
+                this.onXMLMinorError("tag <TEXTURES> out of order");
+
+            //Parse ILLUMINATION block
+            if ((error = this.parseTEXTURES(nodes[index])) != null)
+                return error;
+        }
+
+        // <MATERIALS>
+        if ((index = nodeNames.indexOf("MATERIALS")) == -1)
+            return "tag <MATERIALS> missing";
+        else {
+            if (index != MATERIALS_INDEX)
+                this.onXMLMinorError("tag <MATERIALS> out of order");
+
             //Parse LIGHTS block
-            if ((error = this.parseLights(nodes[index])) != null)
+            if ((error = this.parseMATERIALS(nodes[index])) != null)
                 return error;
         }
 
@@ -183,16 +224,14 @@ class MySceneGraph {
         var indexFrustum = nodeNames.indexOf("frustum");
         if (indexFrustum == -1) {
             this.onXMLMinorError("frustum planes missing; assuming 'near = 0.1' and 'far = 500'");
-        }
-        else {
+        } else {
             this.near = this.reader.getFloat(children[indexFrustum], 'near');
             this.far = this.reader.getFloat(children[indexFrustum], 'far');
 
             if (!(this.near != null && !isNaN(this.near))) {
                 this.near = 0.1;
                 this.onXMLMinorError("unable to parse value for near plane; assuming 'near = 0.1'");
-            }
-            else if (!(this.far != null && !isNaN(this.far))) {
+            } else if (!(this.far != null && !isNaN(this.far))) {
                 this.far = 500;
                 this.onXMLMinorError("unable to parse value for far plane; assuming 'far = 500'");
             }
@@ -268,7 +307,6 @@ class MySceneGraph {
         return null;
     }
 
-
     /**
      * Parses the <LIGHTS> node.
      * @param {lights block element} lightsNode
@@ -319,8 +357,7 @@ class MySceneGraph {
             var enableLight = true;
             if (enableIndex == -1) {
                 this.onXMLMinorError("enable value missing for ID = " + lightId + "; assuming 'value = 1'");
-            }
-            else {
+            } else {
                 var aux = this.reader.getFloat(grandChildren[enableIndex], 'value');
                 if (!(aux != null && !isNaN(aux) && (aux == 0 || aux == 1)))
                     this.onXMLMinorError("unable to parse value component of the 'enable light' field for ID = " + lightId + "; assuming 'value = 1'");
@@ -358,8 +395,7 @@ class MySceneGraph {
                     return "unable to parse x-coordinate of the light position for ID = " + lightId;
                 else
                     positionLight.push(w);
-            }
-            else
+            } else
                 return "light position undefined for ID = " + lightId;
 
             // Retrieves the ambient component.
@@ -392,8 +428,7 @@ class MySceneGraph {
                     return "unable to parse A component of the ambient illumination for ID = " + lightId;
                 else
                     ambientIllumination.push(a);
-            }
-            else
+            } else
                 return "ambient component undefined for ID = " + lightId;
 
             // TODO: Retrieve the diffuse component
@@ -465,7 +500,6 @@ class MySceneGraph {
         console.warn("Warning: " + message);
     }
 
-
     /**
      * Callback to be executed on any message.
      * @param {string} message
@@ -477,8 +511,7 @@ class MySceneGraph {
     /**
      * Displays the scene, processing each node, starting in the root node.
      */
-    displayScene() {
-        // entry point for graph rendering
-        //TODO: Render loop starting at root of graph
+    displayScene() {// entry point for graph rendering
+    //TODO: Render loop starting at root of graph
     }
 }
