@@ -128,7 +128,7 @@ class MySceneGraph {
                 this.onXMLMinorError("tag <AMBIENT> out of order");
 
             //Parse VIEWS block
-            if ((error = this.parseAMBIENT(nodes[index])) != null)
+            if ((error = this.parseAmbient(nodes[index])) != null)
                 return error;
         }
 
@@ -140,7 +140,7 @@ class MySceneGraph {
                 this.onXMLMinorError("tag <LIGHTS> out of order");
 
             //Parse INITIAL block
-            if ((error = this.parseLIGHTS(nodes[index])) != null)
+            if ((error = this.parseLights(nodes[index])) != null)
                 return error;
         }
 
@@ -152,30 +152,6 @@ class MySceneGraph {
                 this.onXMLMinorError("tag <TEXTURES> out of order");
 
             //Parse ILLUMINATION block
-            if ((error = this.parseTEXTURES(nodes[index])) != null)
-                return error;
-        }
-
-        // <MATERIALS>
-        if ((index = nodeNames.indexOf("MATERIALS")) == -1)
-            return "tag <MATERIALS> missing";
-        else {
-            if (index != MATERIALS_INDEX)
-                this.onXMLMinorError("tag <MATERIALS> out of order");
-
-            //Parse LIGHTS block
-            if ((error = this.parseMATERIALS(nodes[index])) != null)
-                return error;
-        }
-
-        // <TEXTURES>
-        if ((index = nodeNames.indexOf("TEXTURES")) == -1)
-            return "tag <TEXTURES> missing";
-        else {
-            if (index != TEXTURES_INDEX)
-                this.onXMLMinorError("tag <TEXTURES> out of order");
-
-            //Parse TEXTURES block
             if ((error = this.parseTextures(nodes[index])) != null)
                 return error;
         }
@@ -187,30 +163,54 @@ class MySceneGraph {
             if (index != MATERIALS_INDEX)
                 this.onXMLMinorError("tag <MATERIALS> out of order");
 
-            //Parse MATERIALS block
+            //Parse LIGHTS block
             if ((error = this.parseMaterials(nodes[index])) != null)
                 return error;
         }
 
-        // <NODES>
-        if ((index = nodeNames.indexOf("NODES")) == -1)
-            return "tag <NODES> missing";
+        // <TRANSFORMATIONS>
+        if ((index = nodeNames.indexOf("TRANSFORMATIONS")) == -1)
+            return "tag <TRANSFORMATIONS> missing";
         else {
-            if (index != NODES_INDEX)
-                this.onXMLMinorError("tag <NODES> out of order");
+            if (index != TRANSFORMATIONS_INDEX)
+                this.onXMLMinorError("tag <TRANSFORMATIONS> out of order");
+
+            //Parse TEXTURES block
+            if ((error = this.parseTransformations(nodes[index])) != null)
+                return error;
+        }
+
+        // <PRIMITIVES>
+        if ((index = nodeNames.indexOf("PRIMITIVES")) == -1)
+            return "tag <PRIMITIVES> missing";
+        else {
+            if (index != PRIMITIVES_INDEX)
+                this.onXMLMinorError("tag <PRIMITIVES> out of order");
+
+            //Parse MATERIALS block
+            if ((error = this.parsePrimitives(nodes[index])) != null)
+                return error;
+        }
+
+        // <COMPONENTS>
+        if ((index = nodeNames.indexOf("COMPONENTS")) == -1)
+            return "tag <COMPONENTS> missing";
+        else {
+            if (index != COMPONENTS_INDEX)
+                this.onXMLMinorError("tag <COMPONENTS> out of order");
 
             //Parse NODES block
-            if ((error = this.parseNodes(nodes[index])) != null)
+            if ((error = this.parseComponents(nodes[index])) != null)
                 return error;
         }
     }
 
     /**
-     * Parses the <INITIALS> block.
+     * Parses the <SCENE> block.
      */
-    parseInitials(initialsNode) {
+    parseScene(sceneNode) {
 
-        var children = initialsNode.children;
+        var children = sceneNode.children;
 
         var nodeNames = [];
 
