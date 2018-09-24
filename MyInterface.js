@@ -1,73 +1,47 @@
+/**
+* MyInterface class, creating a GUI interface.
+*/
 class MyInterface extends CGFinterface {
-
     /**
-	 * MyInterface
-	 * @constructor
-	 */
+     * @constructor
+     */
     constructor() {
         super();
-        var dat = this;
     }
 
     /**
-	 * init
-	 * @param {CGFapplication} application
-	 */
+     * Initializes the interface.
+     * @param {CGFapplication} application
+     */
     init(application) {
-        // call CGFinterface init
         super.init(application);
-
         // init GUI. For more information on the methods, check:
         //  http://workshop.chromeexperiments.com/examples/gui
 
         this.gui = new dat.GUI();
 
-        this.gui.add(this.scene, 'doSomething');
+        // add a group of controls (and open/expand by defult)
 
-        var group = this.gui.addFolder("Luzes");
-        group.open();
-
-        group.add(this.scene, 'Luz1');
-        group.add(this.scene, 'Luz2');
-
-        group.add(this.scene, 'Luz3');
-
-        group.add(this.scene, 'Luz4');
-        group.add(this.scene, 'Luz5');
-
-        var axis = this.gui.add(this.scene, 'showAxis');
-        this.gui.add(this.scene, 'currVehicleAppearance', this.scene.vehicleAppearanceList).name('texture');
-
-        var velocidade = this.gui.add(this.scene, 'velocidade', -100, 100).listen();
-        var height = this.gui.add(this.scene, 'height', 0, 10).listen();
-
-        var update = function() {
-            requestAnimationFrame(update);
-
-        };
-
-        update();
-
-        console.log(this.scene.speed);
-        this.initKeys();
         return true;
     }
-    ;
-    initKeys() {
-        this.scene.gui = this;
-        this.processKeyboard = function() {}
-        ;
-        this.activeKeys = {};
-    }
-    processKeyDown(event) {
-        this.activeKeys[event.code] = true;
-    }
-    ;processKeyUp(event) {
-        this.activeKeys[event.code] = false;
-    }
-    ;isKeyPressed(keyCode) {
-        return this.activeKeys[keyCode] || false;
-    }
 
+    /**
+     * Adds a folder containing the IDs of the lights passed as parameter.
+     * @param {array} lights
+     */
+    addLightsGroup(lights) {
+
+        var group = this.gui.addFolder("Lights");
+        group.open();
+
+        // add two check boxes to the group. The identifiers must be members variables of the scene initialized in scene.init as boolean
+        // e.g. this.option1=true; this.option2=false;
+
+        for (var key in lights) {
+            if (lights.hasOwnProperty(key)) {
+                this.scene.lightValues[key] = lights[key][0];
+                group.add(this.scene.lightValues, key);
+            }
+        }
+    }
 }
-;
