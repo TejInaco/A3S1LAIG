@@ -1,12 +1,12 @@
  #############################################################
- Abrir a pasta CgraDev no terminal
+ Abrir no terminal
  Correr o comando
                    » python -V
  Correr o seguinte comando - na pasta especifica que querems usar
                    » python -m SimpleHTTPServer 8080
  Abrir o chrome
  Copypaste a sequinte info
-                   » http://localhost:8080/tp1/
+                   » http://localhost:8080/nomedapasta/
  ##############################################################
 Pontos comuns ao trabalhos práticos:
 
