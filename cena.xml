@@ -71,7 +71,7 @@
   <!-- ##################################### textures-4 #######################     -->
   <!-- CHANGE Textures -->
   <textures>
-    <texture id="texttabletop">
+    <texture id="tampoTEX">
       <file path="images/table.png" />
       <amplif_factor s="2" t="2" />
     </texture>
