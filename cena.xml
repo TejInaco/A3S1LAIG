@@ -80,25 +80,12 @@
   <!-- CHANGE Textures -->
   <TEXTURES>
 
-    <TEXTURE id="ice">
-      <file path="images/ice.jpg" />
+    <TEXTURE id="texttabletop">
+      <file path="images/table.png" />
       <amplif_factor s="2" t="2" />
     </TEXTURE>
 
-    <TEXTURE id="snow">
-      <file path="images/snow.jpg" />
-      <amplif_factor s="1" t="1" />
-    </TEXTURE>
-
-    <TEXTURE id="wood">
-      <file path="images/wood.jpg" />
-      <amplif_factor s="1" t="1" />
-    </TEXTURE>
-
-    <TEXTURE id="pine">
-      <file path="images/pine.jpg" />
-      <amplif_factor s="15" t="15" />
-    </TEXTURE>
+    
 
   </TEXTURES>
 
@@ -162,7 +149,7 @@
     <!-- Uma "primitive" e' uma primitiva e pode ser usada em nos folha -->
     <!-- Deve existir um ou mais blocos "primitive" -->
     <!-- Os identificadores "id" nao podem ser repetidos -->
-    <primitive id="ss">
+    <primitive id="topcubo">
       <!-- apenas pode existir UMA das seguintes tags: -->
       <!-- rectangle, triangle, cylinder, sphere, torus -->
       <!-- os parametros devem ser interpretados, genericamente, -->
@@ -178,14 +165,14 @@
   <!--componentes-7-->
   <components>
 
-    <component id="ss">
+    <component id="table">
       <!-- Uma "component" e' um objeto composto e pode ser -->
       <!-- usada em nos intermédios -->
       <!-- bloco "transformation" e' obrigatorio -->
       <transformation>
         <!-- deve conter uma referencia a uma das "transformation" -->
         <!-- declaradas anteriormente -->
-        <transformationref id="ss" />
+        <transformationref id="tabletransf" />
         <!-- ou, ALTERNATIVAMENTE, transformacoes explicitas, -->
         <!-- usando zero ou mais das instrucoes seguintes, sem -->
         <!-- limite nem ordem -->
@@ -200,8 +187,7 @@
       <!-- primeiro material; de cada vez que se pressione a tecla m/M, -->
       <!-- o material muda para o proximo material da lista; do -->
       <!-- ultimo material da lista volta ao primeiro -->
-      <materials>
-        <material id="ss" />
+      <materials>  
       </materials>
       <!-- declaracao obrigatoria de texture -->
       <!-- id="inherit" mantem (herda) a textura do objecto "pai" -->
@@ -218,15 +204,44 @@
       <!-- do tipo escalamento violem esta regra. -->
       <!-- Nao e' necessario aplicar fatores de escala em -->
       <!-- quadricas (esfera, cilindro...) -->
-      <texture id="ss" length_s="ff" length_t="ff" />
+      <texture  />
       <!-- bloco "children" obrigatorio num "component" -->
       <children>
         <!-- deve existir uma ou mais tags "componentref" e/ou -->
         <!-- "primitiveref", identificando outros -->
         <!-- componentes ou primitivas -->
-        <componentref id="ss" />
-        <primitiveref id="ss" />
+        <componentref id="tabletop" />
+        <componentref id="tableleg" />
+       <!-- <primitiveref id="ss" /> -->
       </children>
     </component>
+
+<component id="tabletop">
+      
+      <transformation>
+      
+        <transformationref id="tabletoptransf" />
+    
+        <translate x="ff" y="ff" z="ff" />
+        <rotate axis="cc" angle="ff" />
+        <scale x="ff" y="ff" z="ff" />
+      </transformation>
+     
+      <materials>
+        <material id="tabletoptext" />
+      
+      </materials>
+   
+      <texture id="ss" length_s="ff" length_t="ff" />
+      
+      <children>
+      
+        
+       <primitiveref id="topcubo" />
+      </children>
+    </component>
+
+
+
   </components>
 </yas>
