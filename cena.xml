@@ -85,7 +85,7 @@
       <amplif_factor s="2" t="2" />
     </texture>
 
-    
+
 
   </textures>
 
@@ -187,7 +187,7 @@
       <!-- primeiro material; de cada vez que se pressione a tecla m/M, -->
       <!-- o material muda para o proximo material da lista; do -->
       <!-- ultimo material da lista volta ao primeiro -->
-      <materials>  
+      <materials>
       </materials>
       <!-- declaracao obrigatoria de texture -->
       <!-- id="inherit" mantem (herda) a textura do objecto "pai" -->
@@ -212,32 +212,32 @@
         <!-- componentes ou primitivas -->
         <componentref id="tabletop" />
         <componentref id="tableleg" />
-       <!-- <primitiveref id="ss" /> -->
+        <!-- <primitiveref id="ss" /> -->
       </children>
     </component>
 
-<component id="tabletop">
-      
+    <component id="tabletop">
+
       <transformation>
-      
+
         <transformationref id="tabletoptransf" />
-    
+
         <translate x="ff" y="ff" z="ff" />
         <rotate axis="cc" angle="ff" />
         <scale x="ff" y="ff" z="ff" />
       </transformation>
-     
+
       <materials>
         <material id="tabletoptext" />
-      
+
       </materials>
-   
+
       <texture id="ss" length_s="ff" length_t="ff" />
-      
+
       <children>
-      
-        
-       <primitiveref id="topcubo" />
+
+
+        <primitiveref id="topcubo" />
       </children>
     </component>
 
