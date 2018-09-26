@@ -33,102 +33,102 @@
 
 
   <!--lights-3-->
-  <LIGHTS>
-    <OMNI>
+  <lights>
+    <omni>
       <ambient r="0.2" g="0.2" b="0.2" a="1"/>
       <background r="0" g="0" b="0" a="1"/>
-    </OMNI>
+    </omni>
 
-    <SPOT>
-      <LIGHT id="light0">
+    <spot>
+      <light id="light0">
         <enable value="1"/>
         <position x="0" y="50" z="10" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </LIGHT>
+      </light>
 
-      <LIGHT id="light1">
+      <light id="light1">
         <enable value="1"/>
         <position x="150" y="50" z="10" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </LIGHT>
+      </light>
 
-      <LIGHT id="light2">
+      <light id="light2">
         <enable value="1"/>
         <position x="0" y="50" z="30" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </LIGHT>
+      </light>
 
-      <LIGHT id="light3">
+      <light id="light3">
         <enable value="1"/>
         <position x="150" y="50" z="30" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
         <specular r="0.6" g="0.6" b="0.6" a="1.0"/>
-      </LIGHT>
+      </light>
 
-    </SPOT>
-  </LIGHTS>
+    </spot>
+  </lights>
 
 
   <!--textures-4-->
-  <!-- CHANGE Textures -->
-  <TEXTURES>
+  <!-- CHANGE textures -->
+  <textures>
 
-    <TEXTURE id="texttabletop">
+    <texture id="texttabletop">
       <file path="images/table.png" />
       <amplif_factor s="2" t="2" />
-    </TEXTURE>
+    </texture>
 
     
 
-  </TEXTURES>
+  </textures>
 
   <!--CHANGE materials-5-->
-  <MATERIALS>
+  <materials>
 
-    <!-- Green Material -->
-    <MATERIAL id="greenMaterial">
+    <!-- Green material -->
+    <material id="greenmaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.33" g="0.42" b="0.18" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </MATERIAL>
+    </material>
 
-    <!-- Brown Material -->
-    <MATERIAL id="brownMaterial">
+    <!-- Brown material -->
+    <material id="brownmaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.4" g="0.19" b="0.03" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </MATERIAL>
+    </material>
 
-    <!-- Dark Brown Material -->
-    <MATERIAL id="darkBrownMaterial">
+    <!-- Dark Brown material -->
+    <material id="darkBrownmaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.3" g="0.09" b="0.00" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </MATERIAL>
+    </material>
 
     <!-- A default material -->
-    <MATERIAL id="defaultMaterial">
+    <material id="defaultmaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.4" g="0.4" b="0.4" a="1"/>
       <ambient r="0.4" g="0.4" b="0.4" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </MATERIAL>
+    </material>
 
-  </MATERIALS>
+  </materials>
 
   <!--transformations-5-->
   <transformations>
