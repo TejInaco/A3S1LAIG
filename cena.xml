@@ -33,102 +33,102 @@
 
 
   <!--lights-3-->
-  <lights>
-    <omni>
+  <LIGHTS>
+    <OMNI>
       <ambient r="0.2" g="0.2" b="0.2" a="1"/>
       <background r="0" g="0" b="0" a="1"/>
-    </omni>
+    </OMNI>
 
-    <spot>
-      <light id="light0">
+    <SPOT>
+      <LIGHT id="light0">
         <enable value="1"/>
         <position x="0" y="50" z="10" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </light>
+      </LIGHT>
 
-      <light id="light1">
+      <LIGHT id="light1">
         <enable value="1"/>
         <position x="150" y="50" z="10" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </light>
+      </LIGHT>
 
-      <light id="light2">
+      <LIGHT id="light2">
         <enable value="1"/>
         <position x="0" y="50" z="30" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </light>
+      </LIGHT>
 
-      <light id="light3">
+      <LIGHT id="light3">
         <enable value="1"/>
         <position x="150" y="50" z="30" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
         <specular r="0.6" g="0.6" b="0.6" a="1.0"/>
-      </light>
+      </LIGHT>
 
-    </spot>
-  </lights>
+    </SPOT>
+  </LIGHTS>
 
 
   <!--textures-4-->
-  <!-- CHANGE textures -->
-  <textures>
+  <!-- CHANGE Textures -->
+  <TEXTURES>
 
-    <texture id="texttabletop">
+    <TEXTURE id="texttabletop">
       <file path="images/table.png" />
       <amplif_factor s="2" t="2" />
-    </texture>
+    </TEXTURE>
 
     
 
-  </textures>
+  </TEXTURES>
 
   <!--CHANGE materials-5-->
-  <materials>
+  <MATERIALS>
 
-    <!-- Green material -->
-    <material id="greenmaterial">
+    <!-- Green Material -->
+    <MATERIAL id="greenMaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.33" g="0.42" b="0.18" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </material>
+    </MATERIAL>
 
-    <!-- Brown material -->
-    <material id="brownmaterial">
+    <!-- Brown Material -->
+    <MATERIAL id="brownMaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.4" g="0.19" b="0.03" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </material>
+    </MATERIAL>
 
-    <!-- Dark Brown material -->
-    <material id="darkBrownmaterial">
+    <!-- Dark Brown Material -->
+    <MATERIAL id="darkBrownMaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.3" g="0.09" b="0.00" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </material>
+    </MATERIAL>
 
     <!-- A default material -->
-    <material id="defaultmaterial">
+    <MATERIAL id="defaultMaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.4" g="0.4" b="0.4" a="1"/>
       <ambient r="0.4" g="0.4" b="0.4" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </material>
+    </MATERIAL>
 
-  </materials>
+  </MATERIALS>
 
   <!--transformations-5-->
   <transformations>
@@ -149,7 +149,19 @@
     <!-- Uma "primitive" e' uma primitiva e pode ser usada em nos folha -->
     <!-- Deve existir um ou mais blocos "primitive" -->
     <!-- Os identificadores "id" nao podem ser repetidos -->
-    <primitive id="topcubo">
+    <primitive id="cubo">
+      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
+      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
+      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
+      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
+      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
+      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
+      
+      
+      
+      
+      
+      
       <!-- apenas pode existir UMA das seguintes tags: -->
       <!-- rectangle, triangle, cylinder, sphere, torus -->
       <!-- os parametros devem ser interpretados, genericamente, -->
@@ -159,6 +171,7 @@
       <cylinder base="ff" top="ff" height="ff" slices="ii" stacks="ii" />
       <sphere radius="ff" slices="ii" stacks="ii" />
       <torus inner="ff" outer="ff" slices="ii" loops="ii" />
+    
     </primitive >
   </primitives >
 
