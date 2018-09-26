@@ -1,8 +1,3 @@
-<!-- Os comentarios devem ter espacos no inicio e no fim, a -->
-<!-- separar dos hifens -->
-<!-- Nao devem ser usados caracteres especiais (p.ex. acentos) -->
-<!-- Todas as tags e atributos sao obrigatorios, exceto onde for -->
-<!-- referido o contrario -->
 <!-- Na descricao abaixo, os simbolos utilizados tem o seguinte significado: -->
 <!-- ii: integer value -->
 <!-- ff: float value -->
@@ -11,18 +6,15 @@
 <!-- tt: "0" or "1" with Boolean significance -->
 
 <yas>
-  <!-- deve definir-se um objeto para raiz da arvore, assim -->
-  <!-- como o comprimento dos tres eixos (cilindros) -->
-
   <!--scene-0-->
   <scene root="ss" axis_length="ff" />
 
   <!--views-1-->
   <views default="ss">
-    <PERSPECTIVE>
-    </PERSPECTIVE>
-    <ORTHO>
-    </ORTHO>
+    <perspective>
+    </perspective>
+    <ortho>
+    </ortho>
   </views>
 
   <!--ambient-2-->
@@ -32,112 +24,103 @@
   </ambient>
 
 
-  <!--lights-3-->
-  <LIGHTS>
-    <OMNI>
+  <!--  ##################################    lights-3 ############################### -->
+  <lights>
+    <omni>
       <ambient r="0.2" g="0.2" b="0.2" a="1"/>
       <background r="0" g="0" b="0" a="1"/>
-    </OMNI>
+    </omni>
 
-    <SPOT>
-      <LIGHT id="light0">
+    <spot>
+      <light id="light0">
         <enable value="1"/>
         <position x="0" y="50" z="10" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </LIGHT>
+      </light>
 
-      <LIGHT id="light1">
+      <light id="light1">
         <enable value="1"/>
         <position x="150" y="50" z="10" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </LIGHT>
+      </light>
 
-      <LIGHT id="light2">
+      <light id="light2">
         <enable value="1"/>
         <position x="0" y="50" z="30" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>
         <specular r="1.0" g="1.0" b="1.0" a="1.0"/>
-      </LIGHT>
+      </light>
 
-      <LIGHT id="light3">
+      <light id="light3">
         <enable value="1"/>
         <position x="150" y="50" z="30" w="1"/>
         <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
         <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
         <specular r="0.6" g="0.6" b="0.6" a="1.0"/>
-      </LIGHT>
+      </light>
 
-    </SPOT>
-  </LIGHTS>
+    </spot>
+  </lights>
 
 
-  <!--textures-4-->
+  <!-- ##################################### textures-4 #######################     -->
   <!-- CHANGE Textures -->
-  <TEXTURES>
-
-    <TEXTURE id="texttabletop">
+  <textures>
+    <texture id="texttabletop">
       <file path="images/table.png" />
       <amplif_factor s="2" t="2" />
-    </TEXTURE>
-
-
-
-  </TEXTURES>
+    </texture>
+  </textures>
 
   <!--CHANGE materials-5-->
-  <MATERIALS>
+  <materials>
 
     <!-- Green Material -->
-    <MATERIAL id="greenMaterial">
+    <material id="greenMaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.33" g="0.42" b="0.18" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </MATERIAL>
+    </material>
 
     <!-- Brown Material -->
-    <MATERIAL id="brownMaterial">
+    <material id="brownMaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.4" g="0.19" b="0.03" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </MATERIAL>
+    </material>
 
     <!-- Dark Brown Material -->
-    <MATERIAL id="darkBrownMaterial">
+    <material id="darkBrownMaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.3" g="0.09" b="0.00" a="1"/>
       <ambient r="0.0" g="0.0" b="0.0" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </MATERIAL>
+    </material>
 
     <!-- A default material -->
-    <MATERIAL id="defaultMaterial">
+    <material id="defaultMaterial">
       <shininess value="1"/>
       <specular r="0.0" g="0.0" b="0.0" a="1"/>
       <diffuse r="0.4" g="0.4" b="0.4" a="1"/>
       <ambient r="0.4" g="0.4" b="0.4" a="1"/>
       <emission r="0.0" g="0.0" b="0.0" a="1"/>
-    </MATERIAL>
+    </material>
 
-  </MATERIALS>
+  </materials>
 
-  <!--transformations-5-->
+  <!-- #################################    transformations-5 ###########################-->
   <transformations>
-    <!-- Deve existir um ou mais blocos "transformation" -->
-    <!-- Os identificadores "id" nao podem ser repetidos -->
-    <!-- Os angulos sao expressos em graus -->
     <transformation id="ss">
-      <!-- instrucoes a usar sem limite nem ordem -->
-      <!-- deve existir pelo menos uma transformacao -->
       <translate x="ff" y="ff" z="ff" />
       <rotate axis="cc" angle="ff" />
       <scale x="ff" y="ff" z="ff" />
@@ -151,95 +134,48 @@
     </primitive >
   </primitives >
 
-  <!--componentes-7-->
+  <!-- #######################          componentes-7       #####################   -->
   <components>
     <component id="mesa">
       <transformation>
-        <!-- deve conter uma referencia a uma das "transformation" -->
-        <!-- declaradas anteriormente -->
-        <transformationref id="tabletransf" />
-        <!-- ou, ALTERNATIVAMENTE, transformacoes explicitas, -->
-        <!-- usando zero ou mais das instrucoes seguintes, sem -->
-        <!-- limite nem ordem -->
-        <!-- ex: bloco transformation pode ficar sem conteudo -->
-        <translate x="ff" y="ff" z="ff" />
         <rotate axis="cc" angle="ff" />
         <scale x="ff" y="ff" z="ff" />
       </transformation>
-      <!-- declaracao obrigatoria de pelo menos um material; -->
-      <!-- o material id="inherit", mantem (herda) material do "pai" -->
-      <!-- se varios materiais declarados, o default e' o -->
-      <!-- primeiro material; de cada vez que se pressione a tecla m/M, -->
-      <!-- o material muda para o proximo material da lista; do -->
-      <!-- ultimo material da lista volta ao primeiro -->
       <materials>
       </materials>
-      <!-- declaracao obrigatoria de texture -->
-      <!-- id="inherit" mantem (herda) a textura do objecto "pai" -->
-      <!-- id="none" remove a textura recebida do pai -->
-      <!-- a textura declarada sobrepoe a textura recebida do -->
-      <!-- objecto "pai" -->
-      <!-- length_s e length_t sao fatores de escala de textura:-->
-      <!-- Exemplo length_s=3.0: uma ocorrencia da textura, em -->
-      <!-- comprimento, deve cobrir um comprimento igual -->
-      <!-- a 3 unidades; -->
-      <!-- Exemplo length_t=0.4, uma ocorrencia da textura, em -->
-      <!-- largura, deve cobrir uma largura igual a 0.4 unidades. -->
-      <!-- E' permitido que objetos afetados por Transf. Geometr. -->
-      <!-- do tipo escalamento violem esta regra. -->
-      <!-- Nao e' necessario aplicar fatores de escala em -->
-      <!-- quadricas (esfera, cilindro...) -->
-      <texture  />
-      <!-- bloco "children" obrigatorio num "component" -->
+      <texture />
       <children>
-        <!-- deve existir uma ou mais tags "componentref" e/ou -->
-        <!-- "primitiveref", identificando outros -->
-        <!-- componentes ou primitivas -->
-        <componentref id="tabletop" />
-        <componentref id="tableleg" />
-        <!-- <primitiveref id="ss" /> -->
+        <componentref id="tampo" />
+        <componentref id="pernas" />
       </children>
     </component>
 
     <component id="tampo">
-
       <transformation>
-
         <transformationref id="tabletoptransf" />
-
         <translate x="ff" y="ff" z="ff" />
         <rotate axis="cc" angle="ff" />
         <scale x="ff" y="ff" z="ff" />
       </transformation>
-
       <materials>
         <material id="tabletoptext" />
-
       </materials>
-
       <texture id="ss" length_s="ff" length_t="ff" />
-
       <children>
         <componentref id="cubo" />
       </children>
     </component>
 
     <component id="pernas">
-
       <transformation>
-
         <transformationref id="tabletoptransf" />
-
         <translate x="ff" y="ff" z="ff" />
         <rotate axis="cc" angle="ff" />
         <scale x="ff" y="ff" z="ff" />
       </transformation>
-
       <materials>
         <material id="tabletoptext" />
-
       </materials>
-
       <texture id="ss" length_s="ff" length_t="ff" />
 
       <children>
@@ -249,117 +185,48 @@
         <componentref id="perna4" />
       </children>
     </component>
-
+<!-- ############################################## PERNAS ##############################-->
     <component id="perna1">
-
       <transformation>
-
         <transformationref id="tabletoptransf" />
-
         <translate x="ff" y="ff" z="ff" />
         <rotate axis="cc" angle="ff" />
         <scale x="ff" y="ff" z="ff" />
       </transformation>
-
       <materials>
         <material id="tabletoptext" />
-
       </materials>
-
       <texture id="ss" length_s="ff" length_t="ff" />
-
       <children>
         <componentref id="perna" />
       </children>
     </component>
 
     <component id="perna2">
-
-      <transformation>
-
-        <transformationref id="tabletoptransf" />
-
-        <translate x="ff" y="ff" z="ff" />
-        <rotate axis="cc" angle="ff" />
-        <scale x="ff" y="ff" z="ff" />
-      </transformation>
-
-      <materials>
-        <material id="tabletoptext" />
-
-      </materials>
-
-      <texture id="ss" length_s="ff" length_t="ff" />
-
       <children>
         <componentref id="perna" />
       </children>
     </component>
 
     <component id="perna3">
-
-      <transformation>
-
-        <transformationref id="tabletoptransf" />
-
-        <translate x="ff" y="ff" z="ff" />
-        <rotate axis="cc" angle="ff" />
-        <scale x="ff" y="ff" z="ff" />
-      </transformation>
-
-      <materials>
-        <material id="tabletoptext" />
-
-      </materials>
-
-      <texture id="ss" length_s="ff" length_t="ff" />
-
       <children>
         <componentref id="perna" />
       </children>
     </component>
 
     <component id="perna4">
-
-      <transformation>
-
-        <transformationref id="tabletoptransf" />
-
-        <translate x="ff" y="ff" z="ff" />
-        <rotate axis="cc" angle="ff" />
-        <scale x="ff" y="ff" z="ff" />
-      </transformation>
-
-      <materials>
-        <material id="tabletoptext" />
-
-      </materials>
-
-      <texture id="ss" length_s="ff" length_t="ff" />
-
       <children>
         <componentref id="perna" />
       </children>
     </component>
 
     <component id="perna">
-
       <transformation>
-
         <transformationref id="tabletoptransf" />
-
         <translate x="ff" y="ff" z="ff" />
         <rotate axis="cc" angle="ff" />
         <scale x="ff" y="ff" z="ff" />
       </transformation>
-
-      <materials>
-        <material id="tabletoptext" />
-
-      </materials>
-
-      <texture id="ss" length_s="ff" length_t="ff" />
-
       <children>
         <componentref id="cubo" />
       </children>
@@ -431,5 +298,6 @@
         <primitiveref id="rectangulo"/>
       </children>
     </component>
+
   </components>
 </yas>
