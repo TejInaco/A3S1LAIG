@@ -78,7 +78,7 @@ class MySceneGraph {
      * @param {XML root element} rootElement
      */
     parseXMLFile(rootElement) {
-        if (rootElement.nodeName != "YAS")
+        if (rootElement.nodeName != "yas")
             return "root tag <YAS> missing";
 
         var nodes = rootElement.children
@@ -97,11 +97,11 @@ class MySceneGraph {
 
         //SCENE
         var index;
-        if ((index = nodeNames.indexOf("SCENE")) == -1)
+        if ((index = nodeNames.indexOf("scene")) == -1)
             return "tag <SCENE> missing";
         else {
             if (index != SCENE_INDEX)
-                this.onXMLMinorError("tag <SCENE> out of order");
+                this.onXMLMinorError("tag <scene> out of order");
 
             //Parse SCENE block
             if ((error = this.parseScene(nodes[index])) != null)
@@ -109,11 +109,11 @@ class MySceneGraph {
         }
 
         //VIEWS
-        if ((index = nodeNames.indexOf("VIEWS")) == -1)
-            return "tag <VIEWS> missing";
+        if ((index = nodeNames.indexOf("views")) == -1)
+            return "tag <views> missing";
         else {
             if (index != VIEWS_INDEX)
-                this.onXMLMinorError("tag <VIEWS> out of order");
+                this.onXMLMinorError("tag <views> out of order");
 
             //Parse VIEWS block
             if ((error = this.parseViews(nodes[index])) != null)
@@ -121,11 +121,11 @@ class MySceneGraph {
         }
 
         //AMBIENT
-        if ((index = nodeNames.indexOf("AMBIENT")) == -1)
-            return "tag <AMBIENT> missing";
+        if ((index = nodeNames.indexOf("ambient")) == -1)
+            return "tag <ambient> missing";
         else {
             if (index != AMBIENT_INDEX)
-                this.onXMLMinorError("tag <AMBIENT> out of order");
+                this.onXMLMinorError("tag <ambient> out of order");
 
             //Parse VIEWS block
             if ((error = this.parseAmbient(nodes[index])) != null)
@@ -133,11 +133,11 @@ class MySceneGraph {
         }
 
         // <LIGHTS>
-        if ((index = nodeNames.indexOf("LIGHTS")) == -1)
-            return "tag <LIGHTS> missing";
+        if ((index = nodeNames.indexOf("lights")) == -1)
+            return "tag <lights> missing";
         else {
             if (index != LIGHTS_INDEX)
-                this.onXMLMinorError("tag <LIGHTS> out of order");
+                this.onXMLMinorError("tag <lights> out of order");
 
             //Parse INITIAL block
             if ((error = this.parseLights(nodes[index])) != null)
