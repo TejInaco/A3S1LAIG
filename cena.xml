@@ -144,44 +144,16 @@
     </transformation>
   </transformations>
 
-  <!--primitives-6-->
+  <!--    ########################        primitives-6     ###################            -->
   <primitives>
-    <!-- Uma "primitive" e' uma primitiva e pode ser usada em nos folha -->
-    <!-- Deve existir um ou mais blocos "primitive" -->
-    <!-- Os identificadores "id" nao podem ser repetidos -->
-    <primitive id="cubo">
-      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
-      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
-      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
-      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
-      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
-      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
-      
-      
-      
-      
-      
-      
-      <!-- apenas pode existir UMA das seguintes tags: -->
-      <!-- rectangle, triangle, cylinder, sphere, torus -->
-      <!-- os parametros devem ser interpretados, genericamente, -->
-      <!-- como em WebGL; o cilindro deve adicionalmente ter tampas -->
-      <rectangle x1="ff" y1="ff" x2="ff" y2="ff" />
-      <triangle x1="ff" y1="ff" z1="ff" x2="ff" y2="ff" z2="ff" x3="ff" y3="ff" z3="ff" />
-      <cylinder base="ff" top="ff" height="ff" slices="ii" stacks="ii" />
-      <sphere radius="ff" slices="ii" stacks="ii" />
-      <torus inner="ff" outer="ff" slices="ii" loops="ii" />
-    
+    <primitive id="rectangulo">
+      <rectangle x1="0" y1="1" x2="1" y2="0" />
     </primitive >
   </primitives >
 
   <!--componentes-7-->
   <components>
-
-    <component id="table">
-      <!-- Uma "component" e' um objeto composto e pode ser -->
-      <!-- usada em nos intermédios -->
-      <!-- bloco "transformation" e' obrigatorio -->
+    <component id="mesa">
       <transformation>
         <!-- deve conter uma referencia a uma das "transformation" -->
         <!-- declaradas anteriormente -->
@@ -229,7 +201,7 @@
       </children>
     </component>
 
-    <component id="tabletop">
+    <component id="tampo">
 
       <transformation>
 
@@ -248,13 +220,216 @@
       <texture id="ss" length_s="ff" length_t="ff" />
 
       <children>
-
-
-        <primitiveref id="topcubo" />
+        <componentref id="cubo" />
       </children>
     </component>
 
+    <component id="pernas">
 
+      <transformation>
 
+        <transformationref id="tabletoptransf" />
+
+        <translate x="ff" y="ff" z="ff" />
+        <rotate axis="cc" angle="ff" />
+        <scale x="ff" y="ff" z="ff" />
+      </transformation>
+
+      <materials>
+        <material id="tabletoptext" />
+
+      </materials>
+
+      <texture id="ss" length_s="ff" length_t="ff" />
+
+      <children>
+        <componentref id="perna1" />
+        <componentref id="perna2" />
+        <componentref id="perna3" />
+        <componentref id="perna4" />
+      </children>
+    </component>
+
+    <component id="perna1">
+
+      <transformation>
+
+        <transformationref id="tabletoptransf" />
+
+        <translate x="ff" y="ff" z="ff" />
+        <rotate axis="cc" angle="ff" />
+        <scale x="ff" y="ff" z="ff" />
+      </transformation>
+
+      <materials>
+        <material id="tabletoptext" />
+
+      </materials>
+
+      <texture id="ss" length_s="ff" length_t="ff" />
+
+      <children>
+        <componentref id="perna" />
+      </children>
+    </component>
+
+    <component id="perna2">
+
+      <transformation>
+
+        <transformationref id="tabletoptransf" />
+
+        <translate x="ff" y="ff" z="ff" />
+        <rotate axis="cc" angle="ff" />
+        <scale x="ff" y="ff" z="ff" />
+      </transformation>
+
+      <materials>
+        <material id="tabletoptext" />
+
+      </materials>
+
+      <texture id="ss" length_s="ff" length_t="ff" />
+
+      <children>
+        <componentref id="perna" />
+      </children>
+    </component>
+
+    <component id="perna3">
+
+      <transformation>
+
+        <transformationref id="tabletoptransf" />
+
+        <translate x="ff" y="ff" z="ff" />
+        <rotate axis="cc" angle="ff" />
+        <scale x="ff" y="ff" z="ff" />
+      </transformation>
+
+      <materials>
+        <material id="tabletoptext" />
+
+      </materials>
+
+      <texture id="ss" length_s="ff" length_t="ff" />
+
+      <children>
+        <componentref id="perna" />
+      </children>
+    </component>
+
+    <component id="perna4">
+
+      <transformation>
+
+        <transformationref id="tabletoptransf" />
+
+        <translate x="ff" y="ff" z="ff" />
+        <rotate axis="cc" angle="ff" />
+        <scale x="ff" y="ff" z="ff" />
+      </transformation>
+
+      <materials>
+        <material id="tabletoptext" />
+
+      </materials>
+
+      <texture id="ss" length_s="ff" length_t="ff" />
+
+      <children>
+        <componentref id="perna" />
+      </children>
+    </component>
+
+    <component id="perna">
+
+      <transformation>
+
+        <transformationref id="tabletoptransf" />
+
+        <translate x="ff" y="ff" z="ff" />
+        <rotate axis="cc" angle="ff" />
+        <scale x="ff" y="ff" z="ff" />
+      </transformation>
+
+      <materials>
+        <material id="tabletoptext" />
+
+      </materials>
+
+      <texture id="ss" length_s="ff" length_t="ff" />
+
+      <children>
+        <componentref id="cubo" />
+      </children>
+    </component>
+
+    <component id="cubo">
+      <transformation>
+      </transformation>
+      <children>
+        <componentref id="face1"/>
+        <componentref id="face2"/>
+        <componentref id="face3"/>
+        <componentref id="face4"/>
+        <componentref id="face5"/>
+        <componentref id="face6"/>
+      </children>
+    </component>
+    <!-- #############################   Faces   ##################################### -->
+    <component id="face1">
+      <transformation>
+      <!-- Adicionar a trnasf?  -->
+      </transformation>
+      <children>
+        <primitiveref id="rectangulo"/>
+      </children>
+    </component>
+
+    <component id="face2">
+      <transformation>
+      <!-- Adicionar a trnasf?  -->
+      </transformation>
+      <children>
+        <primitiveref id="rectangulo"/>
+      </children>
+    </component>
+
+    <component id="face3">
+      <transformation>
+      <!-- Adicionar a trnasf?  -->
+      </transformation>
+      <children>
+        <primitiveref id="rectangulo"/>
+      </children>
+    </component>
+    
+    <component id="face4">
+      <transformation>
+      <!-- Adicionar a trnasf?  -->
+      </transformation>
+      <children>
+        <primitiveref id="rectangulo"/>
+      </children>
+    </component>
+
+    <component id="face5">
+      <transformation>
+      <!-- Adicionar a trnasf?  -->
+      </transformation>
+      <children>
+        <primitiveref id="rectangulo"/>
+      </children>
+    </component>
+
+    <component id="face6">
+      <transformation>
+      <!-- Adicionar a trnasf?  -->
+      </transformation>
+      <children>
+        <primitiveref id="rectangulo"/>
+      </children>
+    </component>
   </components>
 </yas>
